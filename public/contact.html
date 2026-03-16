@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weego - Contact</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Library pour animations au scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        /* Styles additionnels pour animations et design pro */
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(79,0,9,0.9), rgba(169,0,34,0.8)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 8rem 0;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-title {
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-subtitle {
+            animation: fadeInUp 1.2s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cartes d'information avec hover 3D */
+        .info-card-modern {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            border: 1px solid rgba(169,0,34,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--weego-700), var(--weego-900));
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 1;
+        }
+
+        .info-card-modern:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(169,0,34,0.2);
+        }
+
+        .info-card-modern:hover::before {
+            opacity: 0.05;
+        }
+
+        .info-card-modern .info-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--weego-700), var(--weego-900));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.4s;
+        }
+
+        .info-card-modern:hover .info-icon {
+            transform: rotateY(180deg);
+            background: var(--weego-900);
+        }
+
+        /* Formulaire avec effets */
+        .form-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(169,0,34,0.1);
+            transition: all 0.4s;
+        }
+
+        .form-card:hover {
+            box-shadow: 0 30px 60px rgba(169,0,34,0.15);
+        }
+
+        .form-control-modern {
+            border: 2px solid #eef2f7;
+            border-radius: 12px;
+            padding: 0.8rem 1.2rem;
+            transition: all 0.3s;
+            background: #f8fafd;
+        }
+
+        .form-control-modern:focus {
+            border-color: var(--weego-700);
+            box-shadow: 0 0 0 4px rgba(169,0,34,0.1);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .form-label-modern {
+            font-weight: 600;
+            color: var(--text-default);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-submit-modern {
+            background: linear-gradient(135deg, var(--weego-700), var(--weego-900));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .btn-submit-modern::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-submit-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(169,0,34,0.4);
+        }
+
+        .btn-submit-modern:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-submit-modern i {
+            transition: transform 0.3s;
+        }
+
+        .btn-submit-modern:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Social links animés */
+        .social-link-modern {
+            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(169,0,34,0.1);
+            color: var(--weego-700);
+            border-radius: 12px;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+        }
+
+        .social-link-modern:hover {
+            background: var(--weego-700);
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+            border-radius: 50%;
+        }
+
+        /* FAQ cards animées */
+        .faq-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: all 0.4s;
+            border: 1px solid rgba(169,0,34,0.05);
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .faq-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 30px rgba(169,0,34,0.1);
+            border-color: var(--weego-700);
+        }
+
+        .faq-card i {
+            transition: transform 0.4s;
+        }
+
+        .faq-card:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        /* Map container */
+        .map-container-modern {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            height: 400px;
+        }
+
+        .map-container-modern:hover {
+            box-shadow: 0 30px 60px rgba(169,0,34,0.15);
+            transform: scale(1.01);
+        }
+
+        /* Divider animé */
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--weego-700), var(--weego-900));
+            margin: 2rem auto;
+            border-radius: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { width: 80px; opacity: 1; }
+            50% { width: 120px; opacity: 0.7; }
+        }
+
+        /* Animation au scroll */
+        [data-aos] {
+            pointer-events: none;
+        }
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">Weego</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/pricing.html">Tarifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/public/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero de la page Contact -->
+    <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; position: relative; padding: 5rem 0; margin-top: 70px;">
+        <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1;"></div>
+        <div class="container text-center text-white" style="position: relative; z-index: 2;">
+            <h1 class="display-4 fw-bold">Contactez-nous</h1>
+            <p class="lead">Discutons de votre projet et construisons ensemble votre réussite digitale</p>
+        </div>
+    </section>
+
+
+    <!-- Section Contact Principal -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Coordonnées avec cartes animées -->
+                <div class="col-lg-5">
+                    <div data-aos="fade-right" data-aos-duration="1000">
+                        <span class="section-subtitle">Restons en contact</span>
+                        <h2 class="section-title mb-4">Nos <span class="text-highlight">coordonnées</span></h2>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                            <div class="info-card-modern">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h4>Adresse</h4>
+                                <p class="text-muted mb-0">Cotonou, Bénin</p>
+                                <p class="text-muted">Quartier Haie Vive, Rue 123</p>
+                            </div>
+                        </div>
+
+                        <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+                            <div class="info-card-modern">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <h4>Téléphone</h4>
+                                <p class="text-muted mb-0">+229 01 23 45 67</p>
+                                <p class="text-muted">Lun - Ven, 9h - 18h</p>
+                            </div>
+                        </div>
+
+                        <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+                            <div class="info-card-modern">
+                                <div class="info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h4>Email</h4>
+                                <p class="text-muted mb-0">contact@weego.bj</p>
+                                <p class="text-muted">support@weego.bj</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
+                        <h4 class="mb-3">Suivez-nous</h4>
+                        <div>
+                            <a href="#" class="social-link-modern"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link-modern"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulaire de contact premium -->
+                <div class="col-lg-7">
+                    <div class="form-card" data-aos="fade-left" data-aos-duration="1000">
+                        <h3 class="mb-4">Envoyez-nous un message</h3>
+                        <form id="contactForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label-modern">Nom complet *</label>
+                                    <input type="text" class="form-control-modern w-100" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-modern">Entreprise</label>
+                                    <input type="text" class="form-control-modern w-100">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-modern">Email professionnel *</label>
+                                    <input type="email" class="form-control-modern w-100" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label-modern">Téléphone</label>
+                                    <input type="tel" class="form-control-modern w-100">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label-modern">Sujet *</label>
+                                    <select class="form-control-modern w-100" required>
+                                        <option value="" selected disabled>Choisissez un sujet</option>
+                                        <option value="devis">Demande de devis</option>
+                                        <option value="info">Information sur les services</option>
+                                        <option value="partenariat">Partenariat</option>
+                                        <option value="recrutement">Recrutement / Freelance</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label-modern">Message *</label>
+                                    <textarea class="form-control-modern w-100" rows="5" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="newsletter" checked>
+                                        <label class="form-check-label" for="newsletter">Je souhaite recevoir la newsletter Weego</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-submit-modern">
+                                        <span>Envoyer le message</span>
+                                        <i class="fas fa-paper-plane ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carte Interactive -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-subtitle">Nous trouver</span>
+                <h2 class="section-title">Notre <span class="text-highlight">localisation</span></h2>
+            </div>
+            <div class="map-container-modern" data-aos="zoom-in" data-aos-duration="1000">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.4686759109!2d2.29184865!3d6.36769745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1024a3b9b1b1b1b1%3A0x123456789abcdef!2sCotonou%2C%20B%C3%A9nin!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Premium -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="section-subtitle">Questions fréquentes</span>
+                <h2 class="section-title">Vous avez des <span class="text-highlight">questions ?</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                    <div class="faq-card">
+                        <h5><i class="fas fa-clock me-2" style="color: var(--weego-700);"></i> Quels sont vos délais de réponse ?</h5>
+                        <p class="text-muted mb-0">Nous répondons à toutes les demandes sous 24h ouvrées, souvent plus rapidement.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="faq-card">
+                        <h5><i class="fas fa-globe me-2" style="color: var(--weego-700);"></i> Travaillez-vous hors Bénin ?</h5>
+                        <p class="text-muted mb-0">Oui, nous accompagnons des clients dans toute l'Afrique, en Europe et en Amérique du Nord.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="300">
+                    <div class="faq-card">
+                        <h5><i class="fas fa-file-signature me-2" style="color: var(--weego-700);"></i> Comment obtenir un devis ?</h5>
+                        <p class="text-muted mb-0">Utilisez notre formulaire de contact, appelez-nous ou envoyez un email pour une réponse rapide.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left" data-aos-delay="400">
+                    <div class="faq-card">
+                        <h5><i class="fas fa-handshake me-2" style="color: var(--weego-700);"></i> Proposez-vous des collaborations ?</h5>
+                        <p class="text-muted mb-0">Nous sommes toujours ouverts aux partenariats et candidatures freelances. Contactez-nous !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-logo">Weego</h4>
+                    <p>Agence hybride de marketing digital, spécialiste des marchés africains. Nous combinons stratégie interne et flexibilité freelance pour des résultats concrets.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/index.html">Accueil</a></li>
+                        <li><a href="/public/services.html">Services</a></li>
+                        <li><a href="/public/pricing.html">Tarifs</a></li>
+                        <li><a href="/public/about.html">À propos</a></li>
+                        <li><a href="/public/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Stratégie digitale</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Publicité payante</a></li>
+                        <li><a href="#">Réseaux sociaux</a></li>
+                        <li><a href="#">Marketing d'influence</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Recevez nos actualités et conseils marketing</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn-weego-primary" type="submit">S'abonner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="footer-hr">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="copyright">&copy; 2025 Weego. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white-50 me-3">Mentions légales</a>
+                    <a href="#" class="text-white-50">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialisation de AOS
+        AOS.init({
+            once: false,
+            mirror: true,
+            duration: 800,
+            easing: 'ease-in-out'
+        });
+
+        // Formulaire de contact
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+
+        // Newsletter
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Merci pour votre abonnement avec l'adresse : ${email}`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weego - Agence Hybride de Marketing Digital</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">Weego</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/pricing.html">Tarifs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/public/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section avec slideshow (texte et boutons différents) -->
+    <header class="hero">
+        <div class="hero-slides">
+            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+            <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 glass-panel" id="heroTextContainer">
+                    <!-- Le contenu sera changé dynamiquement par JS -->
+                </div>
+            </div>
+        </div>
+        <div class="hero-controls">
+            <button class="hero-control prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="hero-control next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+        <div class="hero-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </header>
+
+    <!-- Section À propos (avec vidéo YouTube) -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <span class="section-subtitle">Notre philosophie</span>
+                    <h2 class="section-title">Une approche <span class="text-highlight">hybride</span> unique</h2>
+                    <p class="about-text">Weego est née d'un constat simple : les entreprises africaines ont besoin d'un marketing digital à la fois stratégique, flexible et accessible. Nous avons donc créé un modèle qui allie une équipe interne de stratèges expérimentés à un réseau structuré de freelances spécialisés.</p>
+                    <p class="about-text">Ce positionnement nous permet d'offrir des prestations de haute qualité à des coûts maîtrisés, tout en nous adaptant aux réalités économiques locales.</p>
+                    <a href="/public/about.html" class="btn-weego-outline btn-lg mt-3">Plus d'infos <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="video-wrapper">
+                        <div class="video-thumbnail" id="videoThumbnail">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Video thumbnail" class="img-fluid rounded-4">
+                            <button class="btn-play" id="playButton">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <div class="video-iframe d-none" id="videoIframe">
+                            <iframe id="youtubePlayer" width="100%" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services (flip cards) -->
+    <section class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Notre expertise</span>
+                <h2 class="section-title">Des services <span class="text-highlight">sur-mesure</span></h2>
+                <p class="section-description">Découvrez nos six hubs de compétences, animés par nos experts internes et freelances.</p>
+            </div>
+            <div class="row g-4" id="servicesGrid">
+                <!-- Les cartes seront générées par JS pour faciliter la rotation automatique -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Tarification (modernisée) -->
+    <section class="pricing-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Nos tarifs</span>
+                <h2 class="section-title">Des solutions pour tous les budgets</h2>
+                <p class="section-description">Choisissez le pack qui correspond à vos besoins, ou composez votre offre sur mesure.</p>
+            </div>
+            <div class="row g-4 align-items-end">
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header" style="background: linear-gradient(135deg, var(--weego-500), var(--weego-700));">
+                            <h3>Essentiel</h3>
+                            <p class="price">~250 000 FCFA</p>
+                        </div>
+                        <div class="pricing-body">
+                            <p class="text-muted">Idéal pour TPE et solopreneurs</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Stratégie basique</li>
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> SEO (4 articles)</li>
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Social Start</li>
+                            </ul>
+                            <a href="/public/pricing.html" class="btn-weego-outline w-100">Choisir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card featured">
+                        <div class="pricing-header" style="background: linear-gradient(135deg, var(--weego-700), var(--weego-900));">
+                            <h3>Croissance</h3>
+                            <p class="price">~450 000 FCFA</p>
+                        </div>
+                        <div class="pricing-body">
+                            <p class="text-muted">Pour les PME en développement</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Plan stratégique</li>
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> SEO + Ads</li>
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Réseaux sociaux</li>
+                            </ul>
+                            <a href="/public/pricing.html" class="btn-weego-primary w-100">Choisir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header" style="background: linear-gradient(135deg, var(--weego-900), #7a0019);">
+                            <h3>Premium</h3>
+                            <p class="price">À partir de 750 000 FCFA</p>
+                        </div>
+                        <div class="pricing-body">
+                            <p class="text-muted">Pour les marques ambitieuses</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Direction marketing</li>
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Influence + Ads avancé</li>
+                                <li><i class="fas fa-check-circle me-2" style="color: var(--weego-500);"></i> Analyse complète</li>
+                            </ul>
+                            <a href="/public/pricing.html" class="btn-weego-outline w-100">Choisir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p><a href="/public/pricing.html" class="link-weego">Voir tous les modules à la carte →</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA avec modal pour devis -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="cta-wrapper text-center" style="background: linear-gradient(135deg, var(--weego-700), var(--weego-900)); border-radius: 20px; padding: 4rem 2rem;">
+                <h2 class="text-white mb-3">Prêt à booster votre présence digitale ?</h2>
+                <p class="text-white-50 mb-4">Obtenez un devis personnalisé en quelques minutes</p>
+                <button class="btn-weego-light btn-lg" data-bs-toggle="modal" data-bs-target="#quoteModal">
+                    <i class="fas fa-file-signature me-2"></i>Demander un devis
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Partenaires (slider auto) -->
+    <section class="partners-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">Ils nous font confiance</span>
+                <h2 class="section-title">Nos partenaires</h2>
+            </div>
+            <div class="partners-slider">
+                <div class="partners-track">
+                    <!-- 6 cartes partenaires (répétées pour un effet infini) -->
+                    <div class="partner-card">
+                        <i class="fab fa-google fa-3x" style="color: var(--weego-700);"></i>
+                        <p>Google</p>
+                    </div>
+                    <div class="partner-card">
+                        <i class="fab fa-meta fa-3x" style="color: var(--weego-700);"></i>
+                        <p>Meta</p>
+                    </div>
+                    <div class="partner-card">
+                        <i class="fab fa-linkedin fa-3x" style="color: var(--weego-700);"></i>
+                        <p>LinkedIn</p>
+                    </div>
+                    <div class="partner-card">
+                        <i class="fab fa-tiktok fa-3x" style="color: var(--weego-700);"></i>
+                        <p>TikTok</p>
+                    </div>
+                    <div class="partner-card">
+                        <i class="fas fa-chart-line fa-3x" style="color: var(--weego-700);"></i>
+                        <p>DataPro</p>
+                    </div>
+                    <div class="partner-card">
+                        <i class="fas fa-globe fa-3x" style="color: var(--weego-700);"></i>
+                        <p>Africloud</p>
+                    </div>
+                    <!-- Duplicates pour l'effet infini -->
+                    <div class="partner-card">
+                        <i class="fab fa-google fa-3x" style="color: var(--weego-700);"></i>
+                        <p>Google</p>
+                    </div>
+                    <div class="partner-card">
+                        <i class="fab fa-meta fa-3x" style="color: var(--weego-700);"></i>
+                        <p>Meta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Devis -->
+    <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: var(--weego-700); color: white;">
+                    <h5 class="modal-title" id="quoteModalLabel">Demande de devis</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quoteForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Nom complet *</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="company" class="form-label">Entreprise</label>
+                                <input type="text" class="form-control" id="company">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email professionnel *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="service" class="form-label">Service souhaité *</label>
+                            <select class="form-select" id="service" required>
+                                <option value="">Choisissez...</option>
+                                <option value="strategie">Stratégie marketing</option>
+                                <option value="seo">SEO</option>
+                                <option value="ads">Publicité payante</option>
+                                <option value="social">Réseaux sociaux</option>
+                                <option value="influence">Marketing d'influence</option>
+                                <option value="full">Pack complet</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Décrivez votre projet</label>
+                            <textarea class="form-control" id="message" rows="4"></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="newsletter" checked>
+                            <label class="form-check-label" for="newsletter">Je souhaite recevoir la newsletter Weego</label>
+                        </div>
+                        <button type="submit" class="btn-weego-primary w-100">Envoyer la demande</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer moderne -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="footer-logo">Weego</h4>
+                    <p>Agence hybride de marketing digital, spécialiste des marchés africains. Nous combinons stratégie interne et flexibilité freelance pour des résultats concrets.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Liens rapides</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/index.html">Accueil</a></li>
+                        <li><a href="/public/services.html">Services</a></li>
+                        <li><a href="/public/pricing.html">Tarifs</a></li>
+                        <li><a href="/public/about.html">À propos</a></li>
+                        <li><a href="/public/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Stratégie digitale</a></li>
+                        <li><a href="#">SEO</a></li>
+                        <li><a href="#">Publicité payante</a></li>
+                        <li><a href="#">Réseaux sociaux</a></li>
+                        <li><a href="#">Marketing d'influence</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Newsletter</h5>
+                    <p>Recevez nos actualités et conseils marketing</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" required>
+                            <button class="btn-weego-primary" type="submit">S'abonner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="footer-hr">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="copyright">&copy; 2025 Weego. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white-50 me-3">Mentions légales</a>
+                    <a href="#" class="text-white-50">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./static/js/script.js"></script>
+</body>
+</html>
