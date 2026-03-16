@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
         playBtn.addEventListener('click', function () {
             thumbnail.classList.add('d-none');
             iframeContainer.classList.remove('d-none');
-            iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+            iframe.src = "https://www.youtube.com/embed/2ad79Xc20js";
         });
     }
 
