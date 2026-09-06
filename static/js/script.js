@@ -14,21 +14,21 @@ document.addEventListener('DOMContentLoaded', function () {
             badge: "Agence hybride",
             title: "L'agence qui digitalise votre réussite",
             description: "Weego combine stratégie, expertise locale et flexibilité freelance pour offrir un marketing digital sur-mesure aux entreprises béninoises et ouest-africaines.",
-            btn1: { text: "Découvrir nos services", url: "/public/services.html", class: "btn-weego-primary" },
-            btn2: { text: "Nous contacter", url: "/public/contact.html", class: "btn-weego-outline" }
+            btn1: { text: "Découvrir nos services", url: "/src/services.html", class: "btn-weego-primary" },
+            btn2: { text: "Nous contacter", url: "/src/contact.html", class: "btn-weego-outline" }
         },
         {
             badge: "Expertise locale",
             title: "Des stratégies adaptées au marché africain",
             description: "Nous maîtrisons les spécificités culturelles et économiques de l'Afrique de l'Ouest pour des campagnes qui résonnent vraiment.",
-            btn1: { text: "Nos références", url: "/public/about.html", class: "btn-weego-primary" },
-            btn2: { text: "Nous contacter", url: "/public/contact.html", class: "btn-weego-outline" }
+            btn1: { text: "Nos références", url: "/src/about.html", class: "btn-weego-primary" },
+            btn2: { text: "Nous contacter", url: "/src/contact.html", class: "btn-weego-outline" }
         },
         {
             badge: "Flexibilité totale",
             title: "Du sur-mesure pour chaque budget",
             description: "Modules à la carte, exécution freelance ou interne : vous composez l'accompagnement dont vous avez besoin, sans engagement.",
-            btn1: { text: "Voir les tarifs", url: "/public/pricing.html", class: "btn-weego-primary" },
+            btn1: { text: "Voir les tarifs", url: "/src/pricing.html", class: "btn-weego-primary" },
             btn2: { text: "Demander un devis", url: "#", class: "btn-weego-outline", modal: true }
         }
     ];
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="flip-card-back">
                     <h4>${service.name}</h4>
                     <p class="small">${service.description}</p>
-                    <a href="/public/services.html" class="btn-weego-light btn-sm mt-3">En savoir plus</a>
+                    <a href="/src/services.html" class="btn-weego-light btn-sm mt-3">En savoir plus</a>
                 </div>
             </div>
         </div>

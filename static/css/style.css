@@ -545,20 +545,20 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .glass-panel {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 3rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
+    margin: 1rem;
+    padding: 1rem;
 }
 
-/* .glass-panel {
-    padding: 1.5rem;
-} */
 .glass-panel .badge {
     background-color: var(--weego-700) !important;
     color: white;
